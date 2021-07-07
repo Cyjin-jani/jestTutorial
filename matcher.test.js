@@ -133,3 +133,43 @@ test('0.1 + 0.2 = 0.3', () => {
 test('0.1 + 0.2 = 0.3', () => {
   expect(fn.add(0.1, 0.2)).toBeCloseTo(0.3);
 });
+
+
+/**
+ *  유용한 Matchers
+ *  toMatch를 이용하여 정규표현식을 점검 가능!
+ * 
+ * */
+test('Hello world에 a라는 글자가 있나?', () => {
+  expect('Hello world').toMatch(/a/);
+});
+
+/**
+ *  유용한 Matchers
+ *  - toContain : 배열 내부에 요소 있는지 검사
+ * 
+ * */
+
+ test('유저 리스트에 Tom가 있니?', () => {
+   const user = "Tom";
+   const userList = ["Tom", 'Michele', "Harry"]
+  expect(userList).toContain(user);
+});
+
+
+/**
+ *  유용한 Matchers
+ *  - toThrow : 예외가 발생하는 경우를 확인
+ *    인자값으로 에러 메세지를 넣어서 메세지가 일치하는 지 여부도 확인 가능
+ * 
+ * */
+
+// 단순 예외 발생 확인
+ test('error가 발생하는지?', () => {
+ expect(() => fn.throwErr()).toThrow();
+});
+
+// error 메세지 일치 여부 확인 (true: xx 이므로 아래는 false(비통과))
+test('error 메세지 ooo 가 발생하는지?', () => {
+  expect(() => fn.throwErr()).toThrow('ooo');
+ });
